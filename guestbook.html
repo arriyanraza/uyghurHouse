@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uyghur Hacker House - Guestbook</title>
+    <style>
+        body {
+            background: #000000 url('https://web.archive.org/web/19991023011845im_/http://www.geocities.com/Area51/Crater/7366/stars.gif') repeat;
+            color: #00FF00;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+        .guestbook-container {
+            width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #000000;
+            border: 3px double #00FF00;
+        }
+        .entry-form {
+            text-align: left;
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #00FF00;
+        }
+        input, textarea {
+            background: #000000;
+            color: #00FF00;
+            border: 1px solid #00FF00;
+            padding: 5px;
+            margin: 5px 0;
+            width: 100%;
+            font-family: 'Courier New', monospace;
+        }
+        button {
+            background: #000000;
+            color: #00FF00;
+            border: 2px outset #00FF00;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+        .entry {
+            text-align: left;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #00FF00;
+        }
+        a {
+            color: #0000FF;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="guestbook-container">
+        <pre>
+   ____                 _   _                 _    
+  / ___|_   _  ___  ___| |_| |__   ___   ___ | | __
+ | |  _| | | |/ _ \/ __| __| '_ \ / _ \ / _ \| |/ /
+ | |_| | |_| |  __/\__ \ |_| |_) | (_) | (_) |   < 
+  \____|\__,_|\___||___/\__|_.__/ \___/ \___/|_|\_\
+        </pre>
+
+        <div class="entry-form">
+            <h3>Sign the Guestbook</h3>
+            <form id="guestbook-form">
+                <div>
+                    <label for="handle">Hacker Handle:</label><br>
+                    <input type="text" id="handle" name="handle" required>
+                </div>
+                <div>
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Submit Entry</button>
+            </form>
+        </div>
+
+        <div id="entries">
+            <div class="entry">
+                <strong>CyberNinja</strong> (2025-02-23)<br>
+                First! Welcome to our hacker sanctuary in Chinatown!
+            </div>
+            <div class="entry">
+                <strong>ByteWarrior</strong> (2025-02-23)<br>
+                The matrix has you... Follow the white rabbit.
+            </div>
+        </div>
+
+        <p style="margin-top: 20px;">
+            <a href="index.html">&lt;&lt; Back to Main Page</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('guestbook-form').onsubmit = function(e) {
+            e.preventDefault();
+            alert('Entry submitted to the mainframe!');
+            // In a real implementation, this would save to a database
+            const handle = document.getElementById('handle').value;
+            const message = document.getElementById('message').value;
+            const entry = document.createElement('div');
+            entry.className = 'entry';
+            entry.innerHTML = `<strong>${handle}</strong> (2025-02-23)<br>${message}`;
+            document.getElementById('entries').insertBefore(entry, document.getElementById('entries').firstChild);
+            this.reset();
+        };
+    </script>
+</body>
+</html>

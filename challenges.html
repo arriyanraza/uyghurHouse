@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uyghur Hacker House - Challenges</title>
+    <style>
+        body {
+            background: #000000 url('https://web.archive.org/web/19991023011845im_/http://www.geocities.com/Area51/Crater/7366/stars.gif') repeat;
+            color: #00FF00;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+        .challenge-container {
+            width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #000000;
+            border: 3px double #00FF00;
+        }
+        .challenge {
+            text-align: left;
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #00FF00;
+        }
+        .challenge h3 {
+            color: #FF0000;
+            margin-top: 0;
+        }
+        .terminal {
+            background: #000000;
+            border: 1px solid #00FF00;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+            white-space: pre;
+        }
+        button {
+            background: #000000;
+            color: #00FF00;
+            border: 2px outset #00FF00;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+        a {
+            color: #0000FF;
+            text-decoration: underline;
+        }
+        .difficulty {
+            float: right;
+            padding: 5px;
+            border: 1px solid #00FF00;
+        }
+    </style>
+</head>
+<body>
+    <div class="challenge-container">
+        <pre>
+   _____ _           _ _                           
+  / ____| |         | | |                          
+ | |    | |__   __ _| | | ___ _ __   __ _  ___ ___ 
+ | |    | '_ \ / _` | | |/ _ \ '_ \ / _` |/ _ / __|
+ | |____| | | | (_| | | |  __/ | | | (_| |  __\__ \
+  \_____|_| |_|\__,_|_|_|\___|_| |_|\__, |\___|___/
+                                     __/ |          
+                                    |___/           
+        </pre>
+
+        <div class="challenge">
+            <span class="difficulty">Level: Easy</span>
+            <h3>Challenge #1: The Hidden Message</h3>
+            <p>Decode this message using ROT13:</p>
+            <div class="terminal">Jrypbzr gb gur Hlture Unpxre Ubhfr!</div>
+            <button onclick="alert('Hint: Each letter is shifted 13 positions in the alphabet')">Get Hint</button>
+            <button onclick="alert('Solution: Welcome to the Uyghur Hacker House!')">View Solution</button>
+        </div>
+
+        <div class="challenge">
+            <span class="difficulty">Level: Medium</span>
+            <h3>Challenge #2: Binary Riddle</h3>
+            <p>Convert this binary to ASCII:</p>
+            <div class="terminal">01001000 01100001 01100011 01101011 00100000 01110100 01101000 01100101 00100000 01110000 01101100 01100001 01101110 01100101 01110100</div>
+            <button onclick="alert('Hint: Each character is 8 bits')">Get Hint</button>
+            <button onclick="alert('Solution: Hack the planet')">View Solution</button>
+        </div>
+
+        <div class="challenge">
+            <span class="difficulty">Level: Hard</span>
+            <h3>Challenge #3: The Matrix</h3>
+            <p>Find the hidden message in this Matrix-style code:</p>
+            <div class="terminal" style="color: #00FF00;">
+ト ワ ル d ナ サ キ e ヤ マ
+ケ c ユ ム フ o ロ ヨ ソ ネ
+ツ ノ d ホ ヌ e ラ ル カ オ
+モ ヘ _ ハ ク m ウ ヰ ヱ ヲ</div>
+            <button onclick="alert('Hint: Look at the English characters')">Get Hint</button>
+            <button onclick="alert('Solution: decode_me')">View Solution</button>
+        </div>
+
+        <p>New challenges added weekly! Check back often!</p>
+
+        <p style="margin-top: 20px;">
+            <a href="index.html">&lt;&lt; Back to Main Page</a>
+        </p>
+    </div>
+
+    <img src="https://web.archive.org/web/19991023011845im_/http://www.geocities.com/Area51/Crater/7366/hack.gif" alt="Hacker Animation">
+</body>
+</html>
