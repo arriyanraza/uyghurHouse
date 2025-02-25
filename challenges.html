@@ -1,110 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Uyghur Hacker House - Challenges</title>
+    <title>SYSTEM FAILURE</title>
     <style>
         body {
-            background: #000000 url('https://web.archive.org/web/19991023011845im_/http://www.geocities.com/Area51/Crater/7366/stars.gif') repeat;
-            color: #00FF00;
-            font-family: 'Courier New', monospace;
-            text-align: center;
+            background-color: #0000AA;
+            color: #FFFFFF;
+            font-family: "Lucida Console", Monaco, monospace;
+            padding: 50px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .challenge-container {
-            width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #000000;
-            border: 3px double #00FF00;
+        .bsod-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .challenge {
-            text-align: left;
-            margin: 20px 0;
-            padding: 15px;
-            border: 1px solid #00FF00;
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
         }
-        .challenge h3 {
-            color: #FF0000;
-            margin-top: 0;
-        }
-        .terminal {
-            background: #000000;
-            border: 1px solid #00FF00;
-            padding: 10px;
+        p {
+            font-size: 16px;
+            line-height: 1.5;
             margin: 10px 0;
-            font-family: 'Courier New', monospace;
-            text-align: left;
-            white-space: pre;
         }
-        button {
-            background: #000000;
-            color: #00FF00;
-            border: 2px outset #00FF00;
-            padding: 5px 15px;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
+        .error-code {
+            margin-top: 30px;
+            font-weight: bold;
         }
-        a {
-            color: #0000FF;
-            text-decoration: underline;
+        .blink {
+            animation: blink 1s step-end infinite;
         }
-        .difficulty {
-            float: right;
-            padding: 5px;
-            border: 1px solid #00FF00;
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .press-key {
+            position: fixed;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+        }
+        .hidden {
+            display: none;
         }
     </style>
+    <script>
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('cursor').classList.remove('hidden');
+            }, 2000);
+
+            document.addEventListener('keypress', function() {
+                window.location.href = 'index.html';
+            });
+        }
+    </script>
 </head>
 <body>
-    <div class="challenge-container">
-        <pre>
-   _____ _           _ _                           
-  / ____| |         | | |                          
- | |    | |__   __ _| | | ___ _ __   __ _  ___ ___ 
- | |    | '_ \ / _` | | |/ _ \ '_ \ / _` |/ _ / __|
- | |____| | | | (_| | | |  __/ | | | (_| |  __\__ \
-  \_____|_| |_|\__,_|_|_|\___|_| |_|\__, |\___|___/
-                                     __/ |          
-                                    |___/           
-        </pre>
-
-        <div class="challenge">
-            <span class="difficulty">Level: Easy</span>
-            <h3>Challenge #1: The Hidden Message</h3>
-            <p>Decode this message using ROT13:</p>
-            <div class="terminal">Jrypbzr gb gur Hlture Unpxre Ubhfr!</div>
-            <button onclick="alert('Hint: Each letter is shifted 13 positions in the alphabet')">Get Hint</button>
-            <button onclick="alert('Solution: Welcome to the Uyghur Hacker House!')">View Solution</button>
+    <div class="bsod-container">
+        <h1>Windows</h1>
+        <p>A fatal exception 0E has occurred at 0028:C0011E36 in VXD VMM(01) +</p>
+        <p>00010E36. The current application will be terminated.</p>
+        <p>*  Press any key to return to the Uyghur Hacker House homepage</p>
+        <p>*  Press CTRL+ALT+DEL to restart your computer. You will</p>
+        <p>   lose any unsaved information in all applications.</p>
+        
+        <div class="error-code">
+            <p>Error: CHALLENGE_NOT_FOUND</p>
+            <p>Technical information:</p>
+            <p>*** STOP: 0x0000000A (0x00000000, 0x00000000, 0x00000000, 0x00000000)</p>
+            <p>*** SYSROOT\SYSTEM32\CHALLENGES.SYS - Address F86B5A89 base at F86B5000, DateStamp 3d6dd67c</p>
         </div>
 
-        <div class="challenge">
-            <span class="difficulty">Level: Medium</span>
-            <h3>Challenge #2: Binary Riddle</h3>
-            <p>Convert this binary to ASCII:</p>
-            <div class="terminal">01001000 01100001 01100011 01101011 00100000 01110100 01101000 01100101 00100000 01110000 01101100 01100001 01101110 01100101 01110100</div>
-            <button onclick="alert('Hint: Each character is 8 bits')">Get Hint</button>
-            <button onclick="alert('Solution: Hack the planet')">View Solution</button>
+        <div class="press-key">
+            Press any key to return to homepage<span id="cursor" class="blink hidden">_</span>
         </div>
-
-        <div class="challenge">
-            <span class="difficulty">Level: Hard</span>
-            <h3>Challenge #3: The Matrix</h3>
-            <p>Find the hidden message in this Matrix-style code:</p>
-            <div class="terminal" style="color: #00FF00;">
-ト ワ ル d ナ サ キ e ヤ マ
-ケ c ユ ム フ o ロ ヨ ソ ネ
-ツ ノ d ホ ヌ e ラ ル カ オ
-モ ヘ _ ハ ク m ウ ヰ ヱ ヲ</div>
-            <button onclick="alert('Hint: Look at the English characters')">Get Hint</button>
-            <button onclick="alert('Solution: decode_me')">View Solution</button>
-        </div>
-
-        <p>New challenges added weekly! Check back often!</p>
-
-        <p style="margin-top: 20px;">
-            <a href="index.html">&lt;&lt; Back to Main Page</a>
-        </p>
     </div>
-
-    <img src="https://web.archive.org/web/19991023011845im_/http://www.geocities.com/Area51/Crater/7366/hack.gif" alt="Hacker Animation">
 </body>
 </html>
