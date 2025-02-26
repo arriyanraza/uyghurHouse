@@ -1,9 +1,3 @@
-// Supabase configuration
-// Copy this file to config.js and update with your credentials
-export const supabaseUrl = process.env.SUPABASE_URL || "PLACEHOLDER_URL";
-export const supabaseKey = process.env.SUPABASE_KEY || "PLACEHOLDER_KEY";
-
-const supabaseConfig = {
-    url: supabaseUrl,
-    key: supabaseKey
-};
+export const supabaseUrl = 'https://vehhvdklizeatrzeqxpf.supabase.co';
+export const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZlaGh2ZGtsaXplYXRyemVxeHBmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA1NDM4MjcsImV4cCI6MjA1NjExOTgyN30.sH0x_xDefZ2_ZD47H9cFc6P1p6CMu_JIfTph2WnsOqY
+';
