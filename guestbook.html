@@ -3,6 +3,7 @@
 <head>
     <title>Uyghur Hacker House - Guestbook</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
     <style>
         :root {
             --uyghur-red: #B31942;
@@ -158,10 +159,7 @@
     </div>
 
     <script>
-        const supabaseUrl = "https://vehhvdklizeatrzeqxpf.supabase.co";
-        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZlaGh2ZGtsaXplYXRyemVxeHBmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA1NDM4MjcsImV4cCI6MjA1NjExOTgyN30.sH0x_xDefZ2_ZD47H9cFc6P1p6CMu_JIfTph2WnsOqY";
-
-        const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+        const supabaseClient = supabase.createClient(supabaseConfig.url, supabaseConfig.key);
 
         async function loadEntries() {
             try {
