@@ -3,45 +3,94 @@
 <head>
     <title>Uyghur Hacker House - Forum</title>
     <style>
+        :root {
+            --uyghur-gold: #FFD700;
+            --uyghur-blue: #1E90FF;
+            --background-color: #000000;
+        }
+
         body {
-            background: #000000 url('https://web.archive.org/web/19991023011845im_/http://www.geocities.com/Area51/Crater/7366/stars.gif') repeat;
-            color: #00FF00;
+            background: var(--background-color);
+            color: var(--uyghur-gold);
             font-family: 'Courier New', monospace;
             text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
         }
+
         .forum-container {
             width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background: #000000;
-            border: 3px double #00FF00;
+            background: var(--background-color);
+            border: 2px solid var(--uyghur-gold);
+            box-shadow: 0 0 10px var(--uyghur-gold);
         }
+
         .forum-table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
+
         .forum-table th, .forum-table td {
-            border: 1px solid #00FF00;
+            border: 1px solid var(--uyghur-gold);
             padding: 8px;
             text-align: left;
         }
+
         .forum-table th {
-            background: #003300;
+            background: rgba(255, 215, 0, 0.1);
         }
+
         .topic {
             text-align: left;
             margin: 10px 0;
             padding: 10px;
-            border: 1px solid #00FF00;
+            border: 1px solid var(--uyghur-gold);
+            transition: all 0.3s ease;
         }
+
+        .topic:hover {
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 5px var(--uyghur-gold);
+        }
+
         a {
-            color: #0000FF;
-            text-decoration: underline;
+            color: var(--uyghur-gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
+
+        a:hover {
+            text-shadow: 0 0 5px var(--uyghur-gold);
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 16px;
+            background: transparent;
+            border: 2px solid var(--uyghur-gold);
+            color: var(--uyghur-gold);
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--uyghur-gold);
+            color: black;
+            text-shadow: none;
+            box-shadow: 0 0 10px var(--uyghur-gold);
+        }
+
         .blink {
             animation: blinker 1s step-start infinite;
         }
+
         @keyframes blinker {
             50% { opacity: 0; }
         }
@@ -57,51 +106,28 @@
  |_|  \___/|_|   \__,_|_| |_| |_|
         </pre>
 
-        <span class="blink">NEW!</span> Latest topics from our elite hackers!
+        <span class="blink"></span> words
 
         <table class="forum-table">
             <tr>
                 <th>Topic</th>
                 <th>Author</th>
-                <th>Replies</th>
-                <th>Last Post</th>
+                <th>Date</th>
             </tr>
             <tr>
-                <td><a href="#">[STICKY] Forum Rules - READ FIRST</a></td>
-                <td>CyberNinja</td>
-                <td>42</td>
-                <td>2025-02-23</td>
+                <td><a href="https://docs.google.com/document/d/1oxfc4F9_Oqpg2TNyb-4HEq2DA58yKNlI7vlXmT_FH6w/edit?usp=sharing" style="text-decoration: underline;">manifesto</a></td>
+                <td>arriyan</td>
+                <td>02-26-25</td>
             </tr>
             <tr>
-                <td><a href="#">Best Tools for Ethical Hacking</a></td>
-                <td>ByteWarrior</td>
-                <td>13</td>
-                <td>2025-02-23</td>
-            </tr>
-            <tr>
-                <td><a href="#">Weekly Coding Challenge</a></td>
-                <td>QuantumQuester</td>
-                <td>7</td>
-                <td>2025-02-23</td>
-            </tr>
-            <tr>
-                <td><a href="#">Chinatown Food Recommendations</a></td>
-                <td>ByteWarrior</td>
-                <td>21</td>
-                <td>2025-02-23</td>
+                <td><a href="https://docs.google.com/document/d/1OpUdJB5vep75F8gJLG6g3Ho9Yy_i8pPfASJHoIm2nLw/edit?usp=sharing" style="text-decoration: underline;">food</a></td>
+                <td>arriyan</td>
+                <td>02-26-25</td>
             </tr>
         </table>
 
-        <div style="text-align: left; margin: 20px 0;">
-            <button onclick="alert('Coming soon...')">New Topic</button>
-            <button onclick="alert('Coming soon...')">Search</button>
-        </div>
 
-        <p style="margin-top: 20px;">
-            <a href="index.html">&lt;&lt; Back to Main Page</a>
-        </p>
+        <a href="index.html" class="back-button">&lt;&lt; Back to Main Page</a>
     </div>
-
-    <img src="https://web.archive.org/web/19991023011845im_/http://www.geocities.com/Area51/Crater/7366/new.gif" alt="New">
 </body>
 </html>

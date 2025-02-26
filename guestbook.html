@@ -2,109 +2,228 @@
 <html>
 <head>
     <title>Uyghur Hacker House - Guestbook</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
+        :root {
+            --uyghur-red: #B31942;
+            --uyghur-blue: #1E4C8C;
+            --uyghur-gold: #D4AF37;
+        }
+        
         body {
-            background: #000000 url('https://web.archive.org/web/19991023011845im_/http://www.geocities.com/Area51/Crater/7366/stars.gif') repeat;
-            color: #00FF00;
+            background: #000000;
+            color: var(--uyghur-gold);
             font-family: 'Courier New', monospace;
             text-align: center;
-        }
-        .guestbook-container {
-            width: 800px;
-            margin: 20px auto;
+            margin: 0;
             padding: 20px;
-            background: #000000;
-            border: 3px double #00FF00;
+            line-height: 1.6;
         }
-        .entry-form {
+
+        .guestbook-container {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px double var(--uyghur-gold);
+            box-shadow: 0 0 15px var(--uyghur-blue);
+        }
+
+        .entry {
+            text-align: left;
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid var(--uyghur-gold);
+            background: rgba(30, 76, 140, 0.1);
+        }
+
+        .entry:hover {
+            box-shadow: 0 0 10px var(--uyghur-gold);
+        }
+
+        .entry-header {
+            border-bottom: 1px solid var(--uyghur-blue);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .entry-meta {
+            font-size: 0.8em;
+            color: var(--uyghur-red);
+        }
+
+        .entry-content {
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        form {
             text-align: left;
             margin: 20px 0;
             padding: 20px;
-            border: 1px solid #00FF00;
+            border: 1px solid var(--uyghur-blue);
+            background: rgba(30, 76, 140, 0.1);
         }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--uyghur-gold);
+        }
+
         input, textarea {
-            background: #000000;
-            color: #00FF00;
-            border: 1px solid #00FF00;
-            padding: 5px;
-            margin: 5px 0;
             width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            background: #000;
+            color: var(--uyghur-gold);
+            border: 1px solid var(--uyghur-blue);
             font-family: 'Courier New', monospace;
         }
+
         button {
-            background: #000000;
-            color: #00FF00;
-            border: 2px outset #00FF00;
-            padding: 5px 15px;
+            background: #000;
+            color: var(--uyghur-gold);
+            border: 2px solid var(--uyghur-gold);
+            padding: 10px 20px;
             cursor: pointer;
             font-family: 'Courier New', monospace;
+            transition: all 0.3s ease;
         }
-        .entry {
-            text-align: left;
-            margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #00FF00;
+
+        button:hover {
+            background: var(--uyghur-blue);
+            box-shadow: 0 0 10px var(--uyghur-gold);
         }
-        a {
-            color: #0000FF;
-            text-decoration: underline;
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 16px;
+            background: transparent;
+            border: 2px solid var(--uyghur-gold);
+            color: var(--uyghur-gold);
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--uyghur-gold);
+            color: black;
+            text-shadow: none;
+            box-shadow: 0 0 10px var(--uyghur-gold);
         }
     </style>
 </head>
 <body>
     <div class="guestbook-container">
-        <pre>
-   ____                 _   _                 _    
-  / ___|_   _  ___  ___| |_| |__   ___   ___ | | __
- | |  _| | | |/ _ \/ __| __| '_ \ / _ \ / _ \| |/ /
- | |_| | |_| |  __/\__ \ |_| |_) | (_) | (_) |   < 
-  \____|\__,_|\___||___/\__|_.__/ \___/ \___/|_|\_\
-        </pre>
 
-        <div class="entry-form">
-            <h3>Sign the Guestbook</h3>
-            <form id="guestbook-form">
-                <div>
-                    <label for="handle">Hacker Handle:</label><br>
-                    <input type="text" id="handle" name="handle" required>
-                </div>
-                <div>
-                    <label for="message">Message:</label><br>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-                </div>
-                <button type="submit">Submit Entry</button>
-            </form>
-        </div>
+    <pre style="display: flex; justify-content: center; align-items: center; margin: 0">
+     _____ _    _ _____ _____ _____ ____  ____  ____  _  __
+    / ____ | |  | |  ___/ ____|_   _|  _ \|  _ \|  _\| |/ /
+    | |  __| |  | | |__| (___   | | | |_) | |  | |  || ' / 
+    | | |_ | |  | |  __|\___  \ | | |  _ <| |  | |  ||  <  
+    | |__| | |__| | |___|___) | | | | |_) | |__| |__|| . \ 
+    \_____| \____/|_____|____/  |_| |____/|____/|___/|_|\_\
+            
+    </pre>
 
-        <div id="entries">
-            <div class="entry">
-                <strong>CyberNinja</strong> (2025-02-23)<br>
-                First! Welcome to our hacker sanctuary in Chinatown!
+        
+        <form id="guestbook-form">
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
             </div>
-            <div class="entry">
-                <strong>ByteWarrior</strong> (2025-02-23)<br>
-                The matrix has you... Follow the white rabbit.
+            
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
             </div>
-        </div>
+            
+            <button type="submit">[ Sign Guestbook ]</button>
+        </form>
 
-        <p style="margin-top: 20px;">
-            <a href="index.html">&lt;&lt; Back to Main Page</a>
-        </p>
+        <div id="status-message"></div>
+        <div id="entries" class="entries"></div>
+        <a href="index.html" class="back-button">[ Return to Base ]</a>
     </div>
 
     <script>
-        document.getElementById('guestbook-form').onsubmit = function(e) {
+        const supabaseUrl = "https://vehhvdklizeatrzeqxpf.supabase.co";
+        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZlaGh2ZGtsaXplYXRyemVxeHBmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA1NDM4MjcsImV4cCI6MjA1NjExOTgyN30.sH0x_xDefZ2_ZD47H9cFc6P1p6CMu_JIfTph2WnsOqY";
+
+        const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+        async function loadEntries() {
+            try {
+                const { data, error } = await supabaseClient
+                    .from('entries')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                const entriesDiv = document.getElementById('entries');
+                entriesDiv.innerHTML = data.map(entry => `
+                    <div class="entry">
+                        <div class="entry-header">
+                            <strong>${entry.name}</strong>
+                            <span class="entry-meta">${entry.created_at.substring(0, 10)}</span>
+                        </div>
+                        <div class="entry-content">${entry.message}</div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                showStatus('Error loading entries: ' + error.message, 'error');
+            }
+        }
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.textContent = message;
+            statusDiv.className = type;
+            setTimeout(() => {
+                statusDiv.textContent = '';
+                statusDiv.className = '';
+            }, 3000);
+        }
+
+        document.getElementById('guestbook-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            alert('Entry submitted to the mainframe!');
-            // In a real implementation, this would save to a database
-            const handle = document.getElementById('handle').value;
-            const message = document.getElementById('message').value;
-            const entry = document.createElement('div');
-            entry.className = 'entry';
-            entry.innerHTML = `<strong>${handle}</strong> (2025-02-23)<br>${message}`;
-            document.getElementById('entries').insertBefore(entry, document.getElementById('entries').firstChild);
-            this.reset();
-        };
+            
+            const name = document.getElementById('name').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !message) {
+                showStatus('Name and message are required!', 'error');
+                return;
+            }
+
+            try {
+                const { error } = await supabaseClient
+                    .from('entries')
+                    .insert([{ name, message }]);
+
+                if (error) throw error;
+
+                showStatus('Entry added successfully!', 'success');
+                document.getElementById('guestbook-form').reset();
+                loadEntries();
+            } catch (error) {
+                showStatus('Error adding entry: ' + error.message, 'error');
+            }
+        });
+
+        loadEntries();
     </script>
 </body>
 </html>
