@@ -1,9 +1,6 @@
-// Supabase configuration
-// Copy this file to config.js and update with your credentials
-export const supabaseUrl = process.env.SUPABASE_URL || "PLACEHOLDER_URL";
-export const supabaseKey = process.env.SUPABASE_KEY || "PLACEHOLDER_KEY";
-
 const supabaseConfig = {
-    url: supabaseUrl,
-    key: supabaseKey
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    key: process.env.NEXT_PUBLIC_SUPABASE_KEY
 };
+
+export default supabaseConfig;
