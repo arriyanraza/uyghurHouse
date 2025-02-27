@@ -3,4 +3,6 @@ const supabaseConfig = {
     key: process.env.NEXT_PUBLIC_SUPABASE_KEY
 };
 
+console.log(supabaseConfig);
+
 export default supabaseConfig;
